@@ -1,8 +1,22 @@
 <?php
-class WPMB_UIC_Meta_Scanner {
-    public static function detect_field_map() { return array('fields' => array(), 'all_meta_keys' => array()); }
-    public static function get_mapping() { return array(); }
-    public static function field_labels() { return array(); }
-    public static function save_mapping($mapping) { return $mapping; }
-    public static function reset_mapping() { return true; }
+if (!defined('ABSPATH')) {
+    exit;
+}
+
+final class WPMB_UIC_Meta_Scanner {
+
+    public static function scan_post_meta($post_id) {
+        $meta = get_post_meta((int) $post_id);
+        $keys = array_keys($meta);
+        $result = array();
+
+        foreach ($keys as $key) {
+            $result[$key] = array(
+                'value' => maybe_serialize($meta[$key]),
+                'count' => count($meta[$key]),
+            );
+        }
+
+        return $result;
+    }
 }
