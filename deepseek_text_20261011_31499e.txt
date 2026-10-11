@@ -1,0 +1,7 @@
+get_mapping() → [
+    'focus' => ['_yoast_wpseo_focuskw'],
+    'meta_description' => ['_yoast_wpseo_metadesc'],
+    'duration' => ['duration'],
+    'video_url' => ['video_url'],
+    'gallery_ids' => ['wpmb_gallery_ids']
+]

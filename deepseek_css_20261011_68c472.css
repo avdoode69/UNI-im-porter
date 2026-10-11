@@ -1,0 +1,1015 @@
+/* ============================================================
+   🎨 UNI-IM-PORT v1.0.15.3 — Responsive Admin CSS
+   ============================================================
+   หลักการ: Mobile-First, Touch-Friendly, No Horizontal Scroll
+   รองรับ: มือถือ / แท็บเล็ต / คอม / iPad / Ultra-wide
+   ============================================================ */
+
+/* ---------- CSS Variables (Foundation) ---------- */
+:root {
+    --wpmb-primary: #2271b1;
+    --wpmb-primary-hover: #135e96;
+    --wpmb-success: #00a32a;
+    --wpmb-warning: #dba617;
+    --wpmb-error: #d63638;
+    --wpmb-bg: #f0f0f1;
+    --wpmb-surface: #ffffff;
+    --wpmb-surface-2: #f8f9fa;
+    --wpmb-border: #dcdcde;
+    --wpmb-border-2: #c3c4c7;
+    --wpmb-text: #1d2327;
+    --wpmb-text-2: #50575e;
+    --wpmb-text-3: #787c82;
+    --wpmb-overlay: rgba(0, 0, 0, 0.7);
+
+    --wpmb-radius-sm: 4px;
+    --wpmb-radius: 8px;
+    --wpmb-radius-lg: 12px;
+    --wpmb-radius-xl: 16px;
+
+    --wpmb-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --wpmb-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --wpmb-shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.12);
+    --wpmb-shadow-xl: 0 20px 60px rgba(0, 0, 0, 0.3);
+
+    --wpmb-touch-min: 44px;
+    --wpmb-admin-bar-h: 32px;
+
+    --wpmb-container-pad: clamp(12px, 2vw, 24px);
+    --wpmb-font-base: clamp(13px, 1.5vw, 14px);
+}
+
+@media screen and (max-width: 782px) {
+    :root {
+        --wpmb-admin-bar-h: 46px;
+    }
+}
+
+/* ---------- Base Reset (scoped) ---------- */
+.wpmb-wrap *,
+.wpmb-wrap *::before,
+.wpmb-wrap *::after {
+    box-sizing: border-box;
+}
+
+.wpmb-wrap {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: var(--wpmb-container-pad);
+    font-size: var(--wpmb-font-base);
+    line-height: 1.5;
+    color: var(--wpmb-text);
+}
+
+.wpmb-wrap img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.wpmb-wrap code {
+    font-family: Menlo, Consolas, monospace;
+    font-size: 0.92em;
+    background: var(--wpmb-surface-2);
+    padding: 2px 6px;
+    border-radius: var(--wpmb-radius-sm);
+}
+
+/* ---------- Hero Header ---------- */
+.wpmb-hero {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    padding: clamp(15px, 3vw, 25px);
+    background: linear-gradient(135deg, var(--wpmb-primary) 0%, #135e96 100%);
+    color: #fff;
+    border-radius: var(--wpmb-radius-lg);
+    margin-bottom: 15px;
+    box-shadow: var(--wpmb-shadow);
+}
+
+.wpmb-hero h1 {
+    font-size: clamp(18px, 3vw, 24px);
+    font-weight: 700;
+    margin: 0;
+    flex: 1;
+    min-width: 200px;
+    color: #fff;
+    line-height: 1.3;
+}
+
+.wpmb-hero .wpmb-version {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 4px 12px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.wpmb-hero .wpmb-hero-actions {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+/* ---------- Cards ---------- */
+.wpmb-card {
+    background: var(--wpmb-surface);
+    border: 1px solid var(--wpmb-border);
+    border-radius: var(--wpmb-radius-lg);
+    padding: clamp(12px, 2vw, 20px);
+    margin-bottom: 15px;
+    box-shadow: var(--wpmb-shadow-sm);
+}
+
+.wpmb-card-accent {
+    border-left: 4px solid var(--wpmb-primary);
+}
+
+.wpmb-card h2,
+.wpmb-card-title {
+    font-size: clamp(14px, 2vw, 18px);
+    font-weight: 700;
+    margin: 0 0 15px 0;
+    color: var(--wpmb-text);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.wpmb-card h3 {
+    font-size: clamp(13px, 1.8vw, 15px);
+    font-weight: 700;
+    margin: 15px 0 8px 0;
+    color: var(--wpmb-primary);
+}
+
+/* ---------- Section Head ---------- */
+.wpmb-section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+}
+
+.wpmb-section-head > div {
+    flex: 1;
+    min-width: 200px;
+}
+
+.wpmb-section-head p {
+    margin: 4px 0 0 0;
+    font-size: 13px;
+    color: var(--wpmb-text-2);
+}
+
+/* ---------- Grid ---------- */
+.wpmb-grid {
+    display: grid;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.wpmb-grid-1 {
+    grid-template-columns: 1fr;
+}
+
+@media (min-width: 783px) {
+    .wpmb-grid-2 {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (min-width: 1200px) {
+    .wpmb-grid-3 {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+    .wpmb-grid-2-3 {
+        grid-template-columns: 2fr 3fr;
+    }
+    .wpmb-grid-3-2 {
+        grid-template-columns: 3fr 2fr;
+    }
+}
+
+/* ---------- Buttons ---------- */
+.wpmb-wrap .button,
+.wpmb-wrap button.button,
+.wpmb-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    min-height: 36px;
+    padding: 6px 14px;
+    font-size: 13px;
+    font-weight: 500;
+    border-radius: var(--wpmb-radius-sm);
+    cursor: pointer;
+    transition: all 0.15s ease;
+    text-decoration: none;
+    white-space: nowrap;
+    line-height: 1.2;
+}
+
+.wpmb-wrap .button-primary,
+.wpmb-btn-primary {
+    background: var(--wpmb-primary);
+    color: #fff;
+    border-color: var(--wpmb-primary);
+}
+
+.wpmb-wrap .button-primary:hover,
+.wpmb-btn-primary:hover {
+    background: var(--wpmb-primary-hover);
+    border-color: var(--wpmb-primary-hover);
+}
+
+.wpmb-btn-success {
+    background: var(--wpmb-success);
+    color: #fff;
+    border-color: var(--wpmb-success);
+}
+
+.wpmb-btn-danger,
+.wpmb-wrap .wpmb-btn-danger {
+    background: var(--wpmb-error);
+    color: #fff;
+    border-color: var(--wpmb-error);
+}
+
+.wpmb-btn-icon {
+    min-width: 36px;
+    padding: 6px;
+}
+
+/* Touch-friendly on mobile */
+@media (max-width: 782px) {
+    .wpmb-wrap .button,
+    .wpmb-btn {
+        min-height: var(--wpmb-touch-min);
+        padding: 8px 16px;
+        font-size: 13px;
+    }
+
+    .wpmb-btn-icon {
+        min-width: var(--wpmb-touch-min);
+    }
+}
+
+/* ---------- Sticky Toolbar ---------- */
+.wpmb-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 10px;
+    background: var(--wpmb-surface-2);
+    border: 1px solid var(--wpmb-border);
+    border-radius: var(--wpmb-radius);
+    margin-bottom: 15px;
+    position: sticky;
+    top: calc(var(--wpmb-admin-bar-h) + 8px);
+    z-index: 90;
+    backdrop-filter: blur(8px);
+}
+
+.wpmb-toolbar .button,
+.wpmb-toolbar .wpmb-btn {
+    flex-shrink: 0;
+}
+
+.wpmb-toolbar select {
+    min-height: 36px;
+    padding: 0 10px;
+    border-radius: var(--wpmb-radius-sm);
+    border: 1px solid var(--wpmb-border-2);
+    font-size: 13px;
+    background: var(--wpmb-surface);
+}
+
+@media (max-width: 782px) {
+    .wpmb-toolbar {
+        position: static;
+        padding: 8px;
+    }
+
+    .wpmb-toolbar select {
+        min-height: var(--wpmb-touch-min);
+    }
+}
+
+/* ---------- Summary (Compact) ---------- */
+.wpmb-summary {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.wpmb-summary-item {
+    background: var(--wpmb-surface-2);
+    padding: 12px;
+    border-radius: var(--wpmb-radius);
+    text-align: center;
+    border: 1px solid var(--wpmb-border);
+}
+
+.wpmb-summary-item .label {
+    display: block;
+    font-size: 12px;
+    color: var(--wpmb-text-3);
+    margin-bottom: 4px;
+}
+
+.wpmb-summary-item .value {
+    display: block;
+    font-size: clamp(18px, 3vw, 26px);
+    font-weight: 700;
+    color: var(--wpmb-primary);
+    line-height: 1.2;
+}
+
+.wpmb-summary-toggle {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: center;
+}
+
+.wpmb-toggle-btn {
+    width: 100%;
+    padding: 10px;
+    background: var(--wpmb-surface-2);
+    border: 1px dashed var(--wpmb-border-2);
+    border-radius: var(--wpmb-radius);
+    cursor: pointer;
+    font-size: 13px;
+    color: var(--wpmb-text-2);
+    transition: all 0.15s ease;
+    font-family: inherit;
+}
+
+.wpmb-toggle-btn:hover {
+    background: var(--wpmb-surface);
+    color: var(--wpmb-primary);
+    border-color: var(--wpmb-primary);
+}
+
+/* ---------- File List (Collapsible) ---------- */
+.wpmb-file-list {
+    display: none;
+    margin-top: 10px;
+    padding: 10px;
+    background: var(--wpmb-surface-2);
+    border-radius: var(--wpmb-radius);
+    border: 1px solid var(--wpmb-border);
+    max-height: 400px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.wpmb-file-list.open {
+    display: block;
+}
+
+.wpmb-file-list details {
+    margin-bottom: 6px;
+}
+
+.wpmb-file-list details summary {
+    cursor: pointer;
+    padding: 8px 12px;
+    background: var(--wpmb-surface);
+    border-radius: var(--wpmb-radius-sm);
+    font-size: 13px;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.wpmb-file-list details summary::-webkit-details-marker {
+    display: none;
+}
+
+.wpmb-file-list details summary::before {
+    content: '▶';
+    font-size: 10px;
+    transition: transform 0.15s;
+}
+
+.wpmb-file-list details[open] summary::before {
+    transform: rotate(90deg);
+}
+
+.wpmb-file-list details summary:hover {
+    background: var(--wpmb-bg);
+}
+
+.wpmb-file-type {
+    display: inline-block;
+    padding: 2px 8px;
+    background: var(--wpmb-primary);
+    color: #fff;
+    border-radius: var(--wpmb-radius-sm);
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+/* ---------- Preview List ---------- */
+.wpmb-preview-list {
+    display: grid;
+    gap: 10px;
+}
+
+.wpmb-preview-item {
+    background: var(--wpmb-surface);
+    border: 1px solid var(--wpmb-border);
+    border-radius: var(--wpmb-radius);
+    padding: 12px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 10px;
+    align-items: center;
+    transition: all 0.15s ease;
+}
+
+.wpmb-preview-item:hover {
+    border-color: var(--wpmb-primary);
+    box-shadow: var(--wpmb-shadow);
+}
+
+.wpmb-preview-item .code {
+    display: inline-block;
+    font-family: Menlo, Consolas, monospace;
+    background: var(--wpmb-surface-2);
+    color: var(--wpmb-primary);
+    padding: 3px 8px;
+    border-radius: var(--wpmb-radius-sm);
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.wpmb-preview-item .title {
+    font-size: 13px;
+    color: var(--wpmb-text-2);
+    margin-top: 4px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.wpmb-preview-item .actions {
+    display: flex;
+    gap: 6px;
+    flex-shrink: 0;
+}
+
+@media (max-width: 782px) {
+    .wpmb-preview-item {
+        grid-template-columns: 1fr;
+    }
+
+    .wpmb-preview-item .actions {
+        width: 100%;
+    }
+
+    .wpmb-preview-item .actions .button {
+        flex: 1;
+    }
+}
+
+/* ---------- Progress Bar ---------- */
+.wpmb-progress-bar {
+    height: 12px;
+    background: var(--wpmb-surface-2);
+    border-radius: 999px;
+    overflow: hidden;
+    margin-bottom: 12px;
+    border: 1px solid var(--wpmb-border);
+}
+
+.wpmb-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--wpmb-primary), var(--wpmb-success));
+    border-radius: 999px;
+    transition: width 0.3s ease;
+    min-width: 0;
+}
+
+/* ---------- Real-time Report ---------- */
+.wpmb-rt {
+    background: var(--wpmb-surface-2);
+    border: 1px solid var(--wpmb-border);
+    border-radius: var(--wpmb-radius);
+    padding: 15px;
+}
+
+.wpmb-rt-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.wpmb-rt-code {
+    font-family: Menlo, Consolas, monospace;
+    background: var(--wpmb-primary);
+    color: #fff;
+    padding: 3px 10px;
+    border-radius: var(--wpmb-radius-sm);
+    font-weight: 700;
+    font-size: 13px;
+    display: inline-block;
+    margin-left: 4px;
+}
+
+.wpmb-rt-counter {
+    font-size: 13px;
+    color: var(--wpmb-text-2);
+}
+
+.wpmb-rt-counter strong {
+    color: var(--wpmb-primary);
+    font-size: 16px;
+}
+
+/* ---------- Steps ---------- */
+.wpmb-steps {
+    display: grid;
+    gap: 6px;
+    margin-bottom: 15px;
+}
+
+.wpmb-step {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    background: var(--wpmb-surface);
+    border-radius: var(--wpmb-radius-sm);
+    font-size: 13px;
+    border-left: 3px solid var(--wpmb-border);
+    transition: all 0.15s;
+}
+
+.wpmb-step[data-status="done"] {
+    border-left-color: var(--wpmb-success);
+    color: var(--wpmb-success);
+}
+
+.wpmb-step[data-status="warning"] {
+    border-left-color: var(--wpmb-warning);
+    color: var(--wpmb-warning);
+}
+
+.wpmb-step[data-status="error"] {
+    border-left-color: var(--wpmb-error);
+    color: var(--wpmb-error);
+}
+
+.wpmb-step[data-status="running"] {
+    border-left-color: var(--wpmb-primary);
+    background: rgba(34, 113, 177, 0.08);
+    color: var(--wpmb-primary);
+    font-weight: 600;
+    animation: wpmb-pulse 1.5s ease-in-out infinite;
+}
+
+.wpmb-step[data-status="pending"] {
+    color: var(--wpmb-text-3);
+}
+
+@keyframes wpmb-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.65; }
+}
+
+/* ---------- History ---------- */
+.wpmb-history {
+    background: var(--wpmb-surface);
+    border: 1px solid var(--wpmb-border);
+    border-radius: var(--wpmb-radius-sm);
+    padding: 10px;
+    max-height: 240px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.wpmb-history-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 8px;
+    font-size: 12px;
+    border-bottom: 1px solid var(--wpmb-surface-2);
+}
+
+.wpmb-history-item:last-child {
+    border-bottom: none;
+}
+
+/* ---------- Modal System ---------- */
+.wpmb-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 999999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+}
+
+.wpmb-modal.active {
+    display: flex;
+}
+
+.wpmb-modal-overlay {
+    position: absolute;
+    inset: 0;
+    background: var(--wpmb-overlay);
+    backdrop-filter: blur(4px);
+}
+
+.wpmb-modal-content {
+    position: relative;
+    width: clamp(320px, 95vw, 900px);
+    height: clamp(400px, 90vh, 800px);
+    background: var(--wpmb-surface);
+    border-radius: var(--wpmb-radius-xl);
+    box-shadow: var(--wpmb-shadow-xl);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    animation: wpmb-modal-in 0.2s ease;
+}
+
+@keyframes wpmb-modal-in {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.wpmb-modal-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    background: var(--wpmb-surface-2);
+    border-bottom: 1px solid var(--wpmb-border);
+    flex-shrink: 0;
+    flex-wrap: wrap;
+}
+
+.wpmb-modal-title {
+    flex: 1;
+    font-size: 15px;
+    font-weight: 700;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.wpmb-modal-actions {
+    display: flex;
+    gap: 6px;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+}
+
+.wpmb-modal-close {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--wpmb-border);
+    background: var(--wpmb-surface);
+    border-radius: var(--wpmb-radius-sm);
+    font-size: 18px;
+    line-height: 1;
+    color: var(--wpmb-text-2);
+    cursor: pointer;
+    transition: all 0.15s;
+    flex-shrink: 0;
+    padding: 0;
+}
+
+.wpmb-modal-close:hover {
+    background: var(--wpmb-error);
+    color: #fff;
+    border-color: var(--wpmb-error);
+}
+
+.wpmb-modal-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: clamp(15px, 2vw, 20px);
+    -webkit-overflow-scrolling: touch;
+}
+
+.wpmb-modal-footer {
+    display: flex;
+    gap: 8px;
+    padding: 12px 16px;
+    background: var(--wpmb-surface-2);
+    border-top: 1px solid var(--wpmb-border);
+    flex-shrink: 0;
+    flex-wrap: wrap;
+}
+
+.wpmb-modal-footer .button,
+.wpmb-modal-footer .wpmb-btn {
+    flex: 1;
+    min-width: 100px;
+}
+
+/* Full-screen modal on mobile */
+@media (max-width: 782px) {
+    .wpmb-modal {
+        padding: 0;
+    }
+
+    .wpmb-modal-content {
+        width: 100vw;
+        height: 100vh;
+        max-height: 100vh;
+        border-radius: 0;
+    }
+
+    .wpmb-modal-header {
+        padding: 10px 12px;
+    }
+
+    .wpmb-modal-title {
+        font-size: 13px;
+    }
+
+    .wpmb-modal-actions .button {
+        padding: 6px 10px;
+        font-size: 12px;
+        min-height: 36px;
+    }
+
+    .wpmb-modal-close {
+        width: 36px;
+        height: 36px;
+        font-size: 20px;
+    }
+}
+
+/* Landscape mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+    .wpmb-modal-content {
+        width: 100vw;
+        height: 100vh;
+        border-radius: 0;
+    }
+
+    .wpmb-modal-header {
+        padding: 8px 12px;
+    }
+}
+
+/* ---------- Modal Sections ---------- */
+.wpmb-section {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--wpmb-border);
+}
+
+.wpmb-section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.wpmb-section-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--wpmb-primary);
+    margin: 0 0 8px 0;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.wpmb-section-content {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--wpmb-text-2);
+}
+
+.wpmb-section-content p {
+    margin: 0 0 8px 0;
+}
+
+.wpmb-section-content p:last-child {
+    margin-bottom: 0;
+}
+
+/* ---------- Gallery Grid ---------- */
+.wpmb-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.wpmb-gallery-item {
+    aspect-ratio: 1;
+    background: var(--wpmb-surface-2);
+    border: 1px solid var(--wpmb-border);
+    border-radius: var(--wpmb-radius-sm);
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    color: var(--wpmb-text-3);
+}
+
+.wpmb-gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ---------- Form Fields ---------- */
+.wpmb-field {
+    margin-bottom: 15px;
+}
+
+.wpmb-field label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--wpmb-text);
+    margin-bottom: 4px;
+}
+
+.wpmb-field input[type="text"],
+.wpmb-field input[type="number"],
+.wpmb-field input[type="url"],
+.wpmb-field textarea,
+.wpmb-field select {
+    width: 100%;
+    padding: 8px 12px;
+    font-family: inherit;
+    font-size: 14px;
+    color: var(--wpmb-text);
+    background: var(--wpmb-surface);
+    border: 1px solid var(--wpmb-border-2);
+    border-radius: var(--wpmb-radius-sm);
+    transition: all 0.15s;
+    min-height: 40px;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.wpmb-field input:focus,
+.wpmb-field textarea:focus,
+.wpmb-field select:focus {
+    outline: none;
+    border-color: var(--wpmb-primary);
+    box-shadow: 0 0 0 3px rgba(34, 113, 177, 0.15);
+}
+
+.wpmb-field textarea {
+    min-height: 100px;
+    resize: vertical;
+    line-height: 1.5;
+}
+
+@media (max-width: 782px) {
+    .wpmb-field input,
+    .wpmb-field textarea,
+    .wpmb-field select {
+        min-height: var(--wpmb-touch-min);
+        font-size: 15px;
+    }
+}
+
+/* ---------- Notices ---------- */
+.wpmb-notice {
+    padding: 12px 15px;
+    border-radius: var(--wpmb-radius);
+    margin-bottom: 15px;
+    font-size: 13px;
+    line-height: 1.5;
+    border-left: 4px solid;
+}
+
+.wpmb-notice-info {
+    background: #e8f4ff;
+    border-color: var(--wpmb-primary);
+    color: var(--wpmb-text);
+}
+
+.wpmb-notice-warn {
+    background: #fff8e5;
+    border-color: var(--wpmb-warning);
+    color: var(--wpmb-text);
+}
+
+.wpmb-notice-error {
+    background: #fef1f1;
+    border-color: var(--wpmb-error);
+    color: var(--wpmb-text);
+}
+
+.wpmb-notice-success {
+    background: #eef9ef;
+    border-color: var(--wpmb-success);
+    color: var(--wpmb-text);
+}
+
+/* ---------- Tables (Responsive) ---------- */
+.wpmb-table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 0 -12px;
+    padding: 0 12px;
+}
+
+.wpmb-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    background: var(--wpmb-surface);
+}
+
+.wpmb-table th,
+.wpmb-table td {
+    padding: 10px 12px;
+    text-align: left;
+    border-bottom: 1px solid var(--wpmb-border);
+}
+
+.wpmb-table th {
+    background: var(--wpmb-surface-2);
+    font-weight: 700;
+    color: var(--wpmb-text);
+    white-space: nowrap;
+}
+
+.wpmb-table tr:hover {
+    background: var(--wpmb-surface-2);
+}
+
+@media (max-width: 782px) {
+    .wpmb-table {
+        font-size: 12px;
+    }
+
+    .wpmb-table th,
+    .wpmb-table td {
+        padding: 8px 10px;
+    }
+}
+
+/* ---------- Empty State ---------- */
+.wpmb-empty {
+    padding: 40px 20px;
+    text-align: center;
+    color: var(--wpmb-text-3);
+    font-size: 14px;
+    background: var(--wpmb-surface-2);
+    border-radius: var(--wpmb-radius);
+    border: 1px dashed var(--wpmb-border-2);
+}
+
+/* ---------- Responsive Text Sizes ---------- */
+@media (max-width: 480px) {
+    .wpmb-summary {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .wpmb-gallery-grid {
+        grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+    }
+}
+
+/* ---------- Print ---------- */
+@media print {
+    .wpmb-toolbar,
+    .wpmb-modal,
+    .wpmb-btn,
+    .wpmb-wrap .button {
+        display: none !important;
+    }
+}
